@@ -1,14 +1,14 @@
 # card_spec.rb
-# tests for the card class
+# tests for the Card class
 
-require 'card'
+require '../lib/card'
 
 describe Card do
   
   describe ".new" do
-    context "given 1..4, 1..13" do
+    context "given value between 0 and 51" do
       it "returns a Card" do
-        expect(Card.new(1, 2).should be_truthy)
+        expect(Card.new(rand(0...52))).to be_truthy
       end
     end
   end

@@ -4,8 +4,8 @@
 require_relative 'card'
 
 class Deck
-  def initialize(numCards = 52)
-    @numCards = numCards
+  def initialize(num_cards = 52)
+    @num_cards = num_cards
     @deck = []
     make_deck
   end
@@ -17,11 +17,32 @@ class Deck
   end
 
   def make_deck
-    (1..4).each do |suit|
-      (1..13).each do |value|
-        @deck << Card.new(suit, value)
-      end
+    @num_cards.times do |i|
+      @deck << Card.new(i)
     end
+  end
+
+  def shuffle_deck
+    @deck.shuffle
+  end
+
+  def pass_out_hands(num_hands)
+    hands = []
+    @num_hands.times do
+      hands << []
+    end
+    
+    i = 0
+    @deck.each do |card|
+      if i == @num_hands
+        i = 0
+      end
+
+      hands[i] << card
+      i += 1
+    end
+
+    return hands
   end
 
 end
