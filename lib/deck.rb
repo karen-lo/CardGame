@@ -4,6 +4,9 @@
 require_relative 'card'
 
 class Deck
+  
+  attr_accessor :num_cards
+  
   def initialize(num_cards = 52)
     @num_cards = num_cards
     @deck = []
@@ -28,13 +31,13 @@ class Deck
 
   def pass_out_hands(num_hands)
     hands = []
-    @num_hands.times do
+    num_hands.times do
       hands << []
     end
     
     i = 0
     @deck.each do |card|
-      if i == @num_hands
+      if i == num_hands
         i = 0
       end
 
