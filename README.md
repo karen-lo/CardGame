@@ -6,5 +6,5 @@ Which card game you ask? That is a secret for now.
 
 ### TODO:
 - write tests for all the classes
-- write `pass_out_hands`, test that it works
+- write `pass_out_hands` -> last card goes to 3 of diamonds
 - write `play_game`

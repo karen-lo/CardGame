@@ -32,6 +32,8 @@ class Deck
   def pass_out_hands(num_hands)
     if num_hands > 4
       raise 'Cannot pass out more than 4 hands.'
+    elsif num_hands == 2
+      num_hands = 3
     elsif num_hands < 2
       raise 'Cannot pass out less than 2 hands.'
     end
