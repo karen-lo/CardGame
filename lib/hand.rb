@@ -14,12 +14,10 @@ class Hand
 
   def to_s
     string = "{ "
-    i = 0
     
-    @cards.each do |card|
+    @cards.each_with_index do |card, i|
       string << "[#{card.to_s}]"
       string << ", " if i < @num_cards-1
-      i += 1
     end
     
     string << " }\n"

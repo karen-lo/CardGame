@@ -14,13 +14,11 @@ class Deck
   end
 
   def to_s
-    i = 0
     string = ""
 
-    @deck.each do |card|
+    @deck.each_with_index do |card, i|
       string << "[#{card.to_s}]"
       string << ", " if i < @num_cards-1
-      i += 1
     end
     
     string << "\n"

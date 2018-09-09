@@ -3,8 +3,7 @@ module DeckSpecHelper
   THREE_OF_DIAMONDS = 2
 
   def DeckSpecHelper.check_new_hand_sizes(num_hands, hands, num_cards)
-    i = 0
-    hands.each do |hand|
+    hands.each_with_index do |hand, i|
       puts "hand #{i}"
       j = 0
    
@@ -13,7 +12,6 @@ module DeckSpecHelper
         j += 1
       end
 
-      i += 1
       puts
 
       if num_hands == 4 && j != num_cards/num_hands
@@ -27,14 +25,12 @@ module DeckSpecHelper
   end
 
   def DeckSpecHelper.check_extra_card_placement(hands, big_hand_size)
-    i = 0
     long_deck = 0
     three_dia = 0
     
     puts "number of hands: #{hands.length}"
 
-    hands.each do |hand|
-      i += 1
+    hands.each_with_index do |hand, i|
       puts DeckSpecHelper.print_cards(hand)
       
       if hand.length == big_hand_size
@@ -54,14 +50,10 @@ module DeckSpecHelper
 
   def DeckSpecHelper.print_cards(cards_arr)
     string = "{ "
-    i = 0
-
-    cards_arr.each do |card|
+    cards_arr.each_with_index do |card, i|
       string << "[#{card.to_s}]"
       string << ", " if i < cards_arr.length-1
-      i += 1
     end
-    
     string << " }\n"
   end
 end
