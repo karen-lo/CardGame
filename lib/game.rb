@@ -1,4 +1,4 @@
-# hand.rb
+# /lib/game.rb
 # Class definition for a Game
 
 require_relative 'player'

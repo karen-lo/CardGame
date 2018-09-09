@@ -1,4 +1,4 @@
-# hand.rb
+# /lib/hand.rb
 # Class definition for a Hand
 
 require_relative 'card'

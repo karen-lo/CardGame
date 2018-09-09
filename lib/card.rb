@@ -1,4 +1,4 @@
-# card.rb
+# /lib/card.rb
 # Class definition for a Card
 
 class Card

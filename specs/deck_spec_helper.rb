@@ -1,10 +1,13 @@
+# /specs/deck_spec_helper.rb
+# Module of helper functions for Deck specs
+
 module DeckSpecHelper
 
   THREE_OF_DIAMONDS = 2
 
   def DeckSpecHelper.check_new_hand_sizes(num_hands, hands, num_cards)
     hands.each_with_index do |hand, i|
-      puts "hand #{i}"
+      print "hand #{i}: "
       j = 0
    
       hand.each do |card|
@@ -28,8 +31,6 @@ module DeckSpecHelper
     long_deck = 0
     three_dia = 0
     
-    puts "number of hands: #{hands.length}"
-
     hands.each_with_index do |hand, i|
       puts DeckSpecHelper.print_cards(hand)
       

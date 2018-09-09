@@ -1,5 +1,5 @@
-# card_spec.rb
-# tests for the Card class
+# /specs/card_spec.rb
+# Specs for the Card class
 
 require '../lib/card'
 
