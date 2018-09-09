@@ -4,6 +4,9 @@
 require_relative 'hand'
 
 class Player
+  
+  attr_accessor :player_id
+
   def initialize(player_id)
     @player_id = player_id
   end

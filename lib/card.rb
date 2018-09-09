@@ -14,8 +14,8 @@ class Card
     @value += 1
   end
 
-  def print_card
-    print "#{VALUES[@value]} of #{SUITS[@suit]}"
+  def serialize_card
+    "#{VALUES[@value]} of #{SUITS[@suit]}"
   end
 
 end

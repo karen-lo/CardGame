@@ -13,20 +13,21 @@ class Deck
     make_deck
   end
 
-  def print_deck
-    @deck.each do |card|
-      print "#{card.print_card}, "
-    end
-  end
+  def serialize_deck
+    i = 0
+    string = ""
 
-  def make_deck
-    @num_cards.times do |i|
-      @deck << Card.new(i)
+    @deck.each do |card|
+      string << "[#{card.serialize_card}]"
+      string << ", " if i < @num_cards-1
+      i += 1
     end
+    
+    string << "\n"
   end
 
   def shuffle_deck
-    @deck.shuffle
+    @deck.shuffle!
   end
 
   def pass_out_hands(num_hands)
@@ -54,6 +55,14 @@ class Deck
     end
 
     return hands
+  end
+
+  private
+
+  def make_deck
+    @num_cards.times do |i|
+      @deck << Card.new(i)
+    end
   end
 
 end

@@ -5,6 +5,9 @@ require_relative 'player'
 require_relative 'deck'
 
 class Game
+  
+  attr_accessor :num_players
+
   def initialize(deck, num_players)
     @deck = deck
     
