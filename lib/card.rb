@@ -14,7 +14,7 @@ class Card
     @value += 1
   end
 
-  def serialize_card
+  def to_s
     "#{VALUES[@value]} of #{SUITS[@suit]}"
   end
 

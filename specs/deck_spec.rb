@@ -20,8 +20,8 @@ describe Deck do
       it "prints the entire deck of cards" do
         deck = Deck.new
 	deck.num_cards.times do |i|
-	  card_string = Card.new(i).serialize_card
-	  expect(deck.serialize_deck).to include(card_string)
+	  card_string = Card.new(i).to_s
+	  expect(deck.to_s).to include(card_string)
 	end
       end
     end
@@ -31,9 +31,9 @@ describe Deck do
     context "given no parameters" do
       it "mixes Deck class' array of Cards" do
         deck = Deck.new
-        orig = deck.serialize_deck
+        orig = deck.to_s
         deck.shuffle_deck
-        new = deck.serialize_deck
+        new = deck.to_s
         expect(orig.eql?(new)).to be false
       end
     end
@@ -91,7 +91,7 @@ describe Deck do
       end
 
       it "gives the extra card the hand with the Three of Diamonds" do
-        big_hand_sz = @deck.num_cards/@ret_num_hands + 1
+        big_hand_sz = @deck.num_cards/@num_hands + 1
         result = DeckSpecHelper.check_extra_card_placement(@hands, big_hand_sz) 
         expect(result).to be true
       end

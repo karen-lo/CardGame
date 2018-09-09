@@ -42,7 +42,7 @@ module DeckSpecHelper
       end
      
       hand.each do |card|
-        if card.serialize_card.eql?(Card.new(THREE_OF_DIAMONDS).serialize_card)
+        if card.to_s.eql?(Card.new(THREE_OF_DIAMONDS).to_s)
 	  three_dia = i
         end
       end
@@ -57,7 +57,7 @@ module DeckSpecHelper
     i = 0
 
     cards_arr.each do |card|
-      string << "[#{card.serialize_card}]"
+      string << "[#{card.to_s}]"
       string << ", " if i < cards_arr.length-1
       i += 1
     end

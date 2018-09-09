@@ -13,12 +13,12 @@ class Deck
     make_deck
   end
 
-  def serialize_deck
+  def to_s
     i = 0
     string = ""
 
     @deck.each do |card|
-      string << "[#{card.serialize_card}]"
+      string << "[#{card.to_s}]"
       string << ", " if i < @num_cards-1
       i += 1
     end

@@ -12,12 +12,12 @@ class Hand
     @num_cards = cards.length
   end
 
-  def serialize_hand
+  def to_s
     string = "{ "
     i = 0
     
     @cards.each do |card|
-      string << "[#{card.serialize_card}]"
+      string << "[#{card.to_s}]"
       string << ", " if i < @num_cards-1
       i += 1
     end
