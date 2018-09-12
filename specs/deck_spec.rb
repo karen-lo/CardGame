@@ -17,9 +17,9 @@ describe Deck do
     end
   end
 
-  describe ".print_deck" do
+  describe ".to_s" do
     context "given no paramters" do
-      it "prints the entire deck of cards" do
+      it "returns the string representations of the entire deck of Cards" do
         deck = Deck.new
 	deck.num_cards.times do |i|
 	  card_string = Card.new(i).to_s

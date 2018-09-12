@@ -5,7 +5,7 @@ require_relative 'card'
 
 class Hand
   
-  attr_accessor :num_cards
+  attr_accessor :cards, :num_cards
 
   def initialize(cards)
     @cards = cards

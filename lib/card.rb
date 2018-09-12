@@ -7,6 +7,8 @@ class Card
             6 => "Six", 7 => "Seven", 8 => "Eight", 9 => "Nine", 10 => "Ten",
 	    11 => "Jack", 12 => "Queen", 13 => "King"}
 
+  attr_accessor :suit, :value
+
   def initialize(count)
     @suit = count / VALUES.length
     @value = count - (@suit * VALUES.length)
