@@ -5,14 +5,10 @@ require_relative 'hand'
 
 class Player
   
-  attr_accessor :player_id
+  attr_accessor :player_id, :hand
 
   def initialize(player_id)
     @player_id = player_id
-  end
-
-  def set_hand(hand)
-    @hand = hand
   end
 
 end

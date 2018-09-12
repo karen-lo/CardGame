@@ -1,11 +1,11 @@
 # /specs/deck_spec.rb
 # Specs for the Deck class
 
-require_relative "../lib/deck"
-require_relative "../lib/card"
-require_relative "../lib/hand"
-require_relative "../lib/commons"
-require_relative "deck_spec_helper"
+require_relative '../lib/deck'
+require_relative '../lib/card'
+require_relative '../lib/hand'
+require_relative '../lib/commons'
+require_relative 'deck_spec_helper'
 
 describe Deck do
   

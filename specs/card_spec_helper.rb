@@ -11,8 +11,6 @@ module CardSpecHelper
       new_card = Card.new(i)
       
       if new_card.suit != suit || new_card.value != value
-        puts "got: #{new_card.suit}, #{new_card.value}"
-	puts "expects: #{suit}, #{value}"
 	return false
       end
 

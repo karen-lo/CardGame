@@ -1,9 +1,9 @@
 # /specs/hand_spend.rb
 # Specs for the Hand class
 
-require_relative "../lib/hand"
-require_relative "../lib/deck"
-require_relative "hand_spec_helper"
+require_relative '../lib/hand'
+require_relative '../lib/deck'
+require_relative 'hand_spec_helper'
 
 describe Hand do
   
@@ -37,12 +37,14 @@ describe Hand do
   end
 
   describe ".has_card" do
-    context "given a Card" do
-      it "returns true if the Card is in the Hand" do
+    context "given a Card in the hand" do
+      it "returns true" do
         expect(@hand.has_card(@hand.cards.first)).to be true
       end
-
-      it "returns false if the Card is not in the Hand" do
+    end
+    
+    context "given a Card not in the Hand" do
+      it "returns false" do
         card = HandSpecHelper.card_not_in_hand(@hand.cards, @deck.num_cards)
 	expect(@hand.has_card(card)).to be false
       end
