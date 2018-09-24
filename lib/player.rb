@@ -11,4 +11,8 @@ class Player
     @player_id = player_id
   end
 
+  def set_hand(hand)
+    @hand = hand
+  end
+
 end
