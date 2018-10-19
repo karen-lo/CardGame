@@ -43,6 +43,7 @@ describe Game do
        @deck = Deck.new
        @num_players = 3
        @game = Game.new(@deck, @num_players)
+       @game.play_game
      end
 
      it "passes out a hand to each player" do

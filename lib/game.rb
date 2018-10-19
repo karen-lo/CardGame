@@ -18,11 +18,18 @@ class Game
   end
 
   def play_game
-    @deck.shuffle_deck
-    hands = @deck.pass_out_hands
+    deal_hands
   end
 
   private
+
+  def deal_hands
+    @deck.shuffle_deck
+    hands = @deck.pass_out_hands(@num_players)
+    @players.zip(hands).each do |player, hand|
+      player.set_hand(hand)
+    end
+  end
 
   def make_players
     @num_players.times do |i|
