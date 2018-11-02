@@ -1,19 +1,16 @@
 # /lib/card.rb
 # Class definition for a Card
 
+require_relative 'commons'
+
 class Card
-  SUITS = {4 => "Spades", 3 => "Hearts", 2 => "Clubs", 1 => "Diamonds"}
-  VALUES = {1 => "Ace", 2 => "Two", 3 => "Three", 4 => "Four", 5 => "Five",
-            6 => "Six", 7 => "Seven", 8 => "Eight", 9 => "Nine", 10 => "Ten",
-	    11 => "Jack", 12 => "Queen", 13 => "King"}
+  include Commons
 
   attr_accessor :suit, :value
 
   def initialize(count)
-    @suit = count / VALUES.length
-    @value = count - (@suit * VALUES.length)
-    @suit += 1
-    @value += 1
+    @suit = (count % SUITS.length) + 1
+    @value = (count / SUITS.length) + 1
   end
 
   def to_s
