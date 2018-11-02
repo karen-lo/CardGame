@@ -16,4 +16,12 @@ module HandSpecHelper
     end
     return nil
   end
+
+  def HandSpecHelper.check_smallest_card(hand)
+    cards = []
+    hand.cards.each do |card|
+      cards << card.order
+    end
+    cards.sort.first == hand.smallest_card.order
+  end
 end
