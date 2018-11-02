@@ -1,9 +1,10 @@
 # /specs/deck_spec_helper.rb
 # Module of helper functions for Deck specs
 
-module DeckSpecHelper
+require_relative "spec_commons"
 
-  THREE_OF_DIAMONDS = 2
+module DeckSpecHelper
+  include SpecCommons
 
   def DeckSpecHelper.check_new_hand_sizes(num_hands, hands, num_cards)
     hands.each_with_index do |hand, i|
@@ -21,7 +22,7 @@ module DeckSpecHelper
         return false
       elsif num_hands < 4 && 
             j != num_cards/num_hands && j != (num_cards/num_hands)+1
-	return false
+        return false
       end
     end
     return true
@@ -35,12 +36,12 @@ module DeckSpecHelper
       puts DeckSpecHelper.print_cards(hand)
       
       if hand.length == big_hand_size
-	long_deck = i
+        long_deck = i
       end
      
       hand.each do |card|
         if card.to_s.eql?(Card.new(THREE_OF_DIAMONDS).to_s)
-	  three_dia = i
+          three_dia = i
         end
       end
     end

@@ -5,7 +5,7 @@ require_relative 'card'
 require_relative 'commons'
 
 class Deck
-  extend Commons
+  include Commons
   
   attr_accessor :num_cards
   
@@ -30,6 +30,10 @@ class Deck
     @deck.shuffle!
   end
 
+  # Parameter: number of hands
+  # If num_hands == 4, 4 hands will be passed out
+  # If num_hands == 3 or 2, 3 hands will be passed out
+  # Otherwise, error
   def pass_out_hands(num_hands)
     if num_hands > 4
       raise 'Cannot pass out more than 4 hands.'
@@ -49,24 +53,24 @@ class Deck
     hand_with_3c = nil
     @deck.each_with_index do |card, j|
       if j == @num_cards-1 && num_hands == 3
-        if card.to_s.eql?(Card.new(Commons::THREE_OF_DIAMONDS).to_s)
+        if card.order == THREE_OF_DIAMONDS
           hands[hand_with_3c] << card
-	else
-	  hands[hand_with_3d] << card
-	end
+      	else
+      	  hands[hand_with_3d] << card
+      	end
 
       else
         if i == num_hands
           i = 0
         end
 
-        if card.to_s.eql?(Card.new(Commons::THREE_OF_DIAMONDS).to_s)
-	  hand_with_3d = i
-	end
+        if card.order == THREE_OF_DIAMONDS
+      	  hand_with_3d = i
+      	end
 
-        if card.to_s.eql?(Card.new(Commons::THREE_OF_CLUBS).to_s)
-	  hand_with_3c = i
-	end
+        if card.order == THREE_OF_CLUBS
+      	  hand_with_3c = i
+      	end
 
         hands[i] << card
         i += 1
