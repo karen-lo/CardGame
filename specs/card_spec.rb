@@ -8,8 +8,8 @@ describe Card do
   
   describe ".new" do
     context "given value between 0 and 51" do
-      it "returns a Card with correct suit and value" do 
-	expect(CardSpecHelper.check_new_cards).to be true
+      it "returns a Card with correct order, suit and value" do 
+	     expect(CardSpecHelper.check_new_cards).to be true
       end
     end
   end

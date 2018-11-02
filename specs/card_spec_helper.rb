@@ -1,10 +1,10 @@
 # /specs/card_spec_helper.rb
 # Module of helper functions for Card specs
 
-require_relative '../lib/commons'
+require_relative 'spec_commons'
 
 module CardSpecHelper
-  include Commons
+  include SpecCommons
 
   def CardSpecHelper.check_new_cards
     suit = 1
@@ -12,7 +12,7 @@ module CardSpecHelper
     DECK_SIZE.times do |i|
       new_card = Card.new(i)
       
-      if new_card.suit != suit || new_card.value != value
+      if new_card.suit != suit || new_card.value != value || new_card.order != i
         puts suit
         puts value
         print new_card.to_s
