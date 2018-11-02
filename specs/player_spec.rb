@@ -10,7 +10,7 @@ describe Player do
   describe ".new" do
     context " given an id number" do
       before :context do
-        @id = rand(0..4)
+        @id = rand
         @player = Player.new(@id)
       end
       
@@ -27,16 +27,16 @@ describe Player do
   describe "set_hand" do
     context "given a Hand" do
       before :context do
-        @id = rand(0..4)
+        @id = rand
         @player = Player.new(@id)
-	@deck = Deck.new
-	@deck.shuffle_deck
-	@hand = Hand.new(@deck.pass_out_hands(3).first)
+      	@deck = Deck.new
+      	@deck.shuffle_deck
+      	@hand = @deck.pass_out_hands(3).first
       end
 
       it "saves the Hand" do
         @player.set_hand(@hand)
-	expect(PlayerSpecHelper.compare_hands(@player, @hand)).to be true
+        expect(PlayerSpecHelper.compare_hands(@player, @hand)).to be true
       end
     end
   end

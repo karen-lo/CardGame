@@ -12,7 +12,10 @@ class Player
   end
 
   def set_hand(hand)
-    @hand = hand
+    @hand = Hand.new(hand)
   end
 
+  def to_s
+  	print "player #{@player_id}"
+  end
 end

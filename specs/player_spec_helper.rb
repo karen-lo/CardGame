@@ -4,7 +4,7 @@
 module PlayerSpecHelper
 
   def PlayerSpecHelper.compare_hands(player, hand)
-    hand.cards.each do |card|
+    hand.each do |card|
       return false if !player.hand.cards.include?(card)
     end
     return true
