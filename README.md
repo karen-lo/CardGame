@@ -6,4 +6,9 @@ Which card game you ask? That is a secret for now. Try guessing by taking a look
 
 ### TODO:
 - write `play_game` tdd
-- make a config file for constants in specs like num_players
+- triples as a choice
+
+1. write a method to determine win condition + test
+2. write method to prompt player for choice
+3. write `play` in player.rb + test
+

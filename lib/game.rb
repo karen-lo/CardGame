@@ -18,8 +18,21 @@ class Game
   end
 
   def play_game
+    puts "\nStarting game...\n\n"
     deal_hands
     order_players
+    # TODO
+    while find_winner == nil
+      # prompt player for choice
+      choice = @players[0].choose_play # TODO: test
+      return
+
+      # check choice with player.play
+      # game should verify cards played (undo or check in player.play)
+
+      # rotate players at the end
+      @players.rotate!
+    end
   end
 
   private
@@ -53,5 +66,13 @@ class Game
      @players.rotate!
       i += 1
     end
+  end
+
+  def find_winner
+    winner = nil
+    @players.each do |player|
+      winner = player if player.hand.cards.empty?
+    end
+    winner
   end
 end

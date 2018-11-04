@@ -9,8 +9,7 @@ describe Game do
     context "given a deck and number of players" do
       before :context do
         @deck = Deck.new
-        @num_players = 3
-        @game = Game.new(@deck, @num_players)
+        @game = Game.new(@deck, DEFAULT_NUM_PLAYERS)
       end
       
       it "initializes the deck correctly" do
@@ -18,7 +17,7 @@ describe Game do
       end
 
       it "intializes the number of players correctly" do
-        expect(@game.num_players).to eq(@num_players)
+        expect(@game.num_players).to eq(DEFAULT_NUM_PLAYERS)
       end
     end
   end
@@ -27,12 +26,11 @@ describe Game do
     context "given that the game is initialized" do
       before :context do
         @deck = Deck.new
-        @num_players = 3
-        @game = Game.new(@deck, @num_players)
+        @game = Game.new(@deck, DEFAULT_NUM_PLAYERS)
       end
 
       it "makes the correct number of players" do
-        expect(@game.players.length).to eq(@num_players)
+        expect(@game.players.length).to eq(DEFAULT_NUM_PLAYERS)
       end
     end
   end

@@ -10,8 +10,7 @@ describe Hand do
   before :example do
     @deck = Deck.new
     @deck.shuffle_deck
-    @num_hands = 3
-    @hands = @deck.pass_out_hands(@num_hands)
+    @hands = @deck.pass_out_hands(DEFAULT_NUM_PLAYERS)
     @hand = Hand.new(@hands[0])
   end
   
