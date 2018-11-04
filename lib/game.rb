@@ -8,14 +8,12 @@ require_relative 'player'
 class Game
   include Commons
   
-  attr_accessor :num_players, :deck, :players
+  attr_accessor :deck, :num_players, :players
 
   def initialize(deck, num_players)
     @deck = deck
-    
     @num_players = num_players
     @players = []
-    
     make_players
   end
 
@@ -49,6 +47,7 @@ class Game
         smallest_card_order = player.hand.smallest_card.order
       end
     end
+    
     i = 0
     while i != start_player
      @players.rotate!

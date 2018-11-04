@@ -10,24 +10,9 @@ class Deck
   attr_accessor :num_cards
   
   def initialize(num_cards = 52)
-    @num_cards = num_cards
     @deck = []
+    @num_cards = num_cards
     make_deck
-  end
-
-  def to_s
-    string = ""
-
-    @deck.each_with_index do |card, i|
-      string << "[#{card.to_s}]"
-      string << ", " if i < @num_cards-1
-    end
-    
-    string << "\n"
-  end
-
-  def shuffle_deck
-    @deck.shuffle!
   end
 
   # Parameter: number of hands
@@ -63,21 +48,33 @@ class Deck
         if i == num_hands
           i = 0
         end
-
         if card.order == THREE_OF_DIAMONDS
           hand_with_3d = i
         end
-
         if card.order == THREE_OF_CLUBS
           hand_with_3c = i
         end
-
         hands[i] << card
         i += 1
       end
     end
 
     return hands
+  end
+
+  def shuffle_deck
+    @deck.shuffle!
+  end
+
+  def to_s
+    string = ""
+
+    @deck.each_with_index do |card, i|
+      string << "[#{card.to_s}]"
+      string << ", " if i < @num_cards-1
+    end
+    
+    string << "\n"
   end
 
   private

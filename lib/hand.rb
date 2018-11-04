@@ -14,6 +14,13 @@ class Hand
     find_smallest_card
   end
 
+  def has_card?(card)
+    @cards.each do |hand_card|
+      return true if card.order == hand_card.order
+    end
+    return false
+  end
+
   def to_s
     string = "{ "
     
@@ -25,23 +32,14 @@ class Hand
     string << " }\n"
   end
 
-  def has_card?(card)
-    @cards.each do |hand_card|
-      return true if card.order == hand_card.order
-    end
-    return false
-  end
-
   private
 
   def find_smallest_card
     @smallest_card = @cards.first
-
     @cards.each do |card|
       next if card.order > @smallest_card.order
       @smallest_card = card
     end
   end
-
-
+  
 end

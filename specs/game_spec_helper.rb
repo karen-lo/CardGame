@@ -6,13 +6,6 @@ require_relative "spec_commons"
 module GameSpecHelper
   include SpecCommons
 
-  def GameSpecHelper.check_player_hands(players)
-    players.each do |player|
-      return false if player.hand == nil
-    end
-    return true
-  end
-
   def GameSpecHelper.check_correct_first_player(players)
     if players.length < 2 || players.length > 4
       raise 'Error: do not support this number of players'
@@ -27,6 +20,13 @@ module GameSpecHelper
     puts "smallest card: #{smallest_card}"
 
     return players[0].hand.has_card?(smallest_card)
+  end
+
+  def GameSpecHelper.check_player_hands(players)
+    players.each do |player|
+      return false if player.hand == nil
+    end
+    return true
   end
 
 end

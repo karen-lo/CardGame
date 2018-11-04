@@ -14,32 +14,7 @@ describe Deck do
     end
   end
 
-  describe ".to_s" do
-    context "given no paramters" do
-      it "returns the string representations of the entire deck of Cards" do
-        deck = Deck.new
-  deck.num_cards.times do |i|
-    card_string = Card.new(i).to_s
-    expect(deck.to_s).to include(card_string)
-  end
-      end
-    end
-  end
-
-  describe ".shuffle_deck" do
-    context "given no parameters" do
-      it "mixes Deck class' array of Cards" do
-        deck = Deck.new
-        orig = deck.to_s
-        deck.shuffle_deck
-        new = deck.to_s
-        expect(orig.eql?(new)).to be false
-      end
-    end
-  end
-
   describe ".pass_out_hands" do
-
     context "given num_hands > 4 " do
       before :each do
         @deck = Deck.new
@@ -57,7 +32,7 @@ describe Deck do
         @deck = Deck.new
         @deck.shuffle_deck
         @num_hands = 4
-  @hands = @deck.pass_out_hands(@num_hands)
+        @hands = @deck.pass_out_hands(@num_hands)
       end
       
       it "creates 4 hands" do
@@ -76,7 +51,7 @@ describe Deck do
         @deck = Deck.new
         @deck.shuffle_deck
         @num_hands = 3
-  @hands = @deck.pass_out_hands(@num_hands)
+        @hands = @deck.pass_out_hands(@num_hands)
       end
       
       it "creates 3 hands" do
@@ -101,8 +76,8 @@ describe Deck do
         @deck = Deck.new
         @deck.shuffle_deck
         @num_hands = 2
-  @ret_num_hands = 3
-  @hands = @deck.pass_out_hands(@num_hands)
+        @ret_num_hands = 3
+        @hands = @deck.pass_out_hands(@num_hands)
       end
       
       it "creates 3 hands" do
@@ -131,6 +106,31 @@ describe Deck do
 
       it "gives an error" do
         expect{@deck.pass_out_hands(@num_hands)}.to raise_error(RuntimeError)
+      end
+    end
+  end
+
+
+  describe ".to_s" do
+    context "given no paramters" do
+      it "returns the string representations of the entire deck of Cards" do
+        deck = Deck.new
+        deck.num_cards.times do |i|
+          card_string = Card.new(i).to_s
+          expect(deck.to_s).to include(card_string)
+        end
+      end
+    end
+  end
+
+  describe ".shuffle_deck" do
+    context "given no parameters" do
+      it "mixes Deck class' array of Cards" do
+        deck = Deck.new
+        orig = deck.to_s
+        deck.shuffle_deck
+        new = deck.to_s
+        expect(orig.eql?(new)).to be false
       end
     end
   end

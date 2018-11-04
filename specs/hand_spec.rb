@@ -27,11 +27,10 @@ describe Hand do
     end
   end
 
-  describe ".to_s" do
-    context "given no parameters" do
-      it "returns the string representation of the hand" do
-        r = HandSpecHelper.check_to_string(@hand.to_s, @hand.cards)
-        expect(r).to be true
+  describe ".find_smallest_card" do
+    context "given an array of Cards" do
+      it "finds the smallest card" do
+        expect(HandSpecHelper.check_smallest_card(@hand)).to be true
       end
     end
   end
@@ -51,12 +50,13 @@ describe Hand do
     end
   end
 
-  describe ".find_smallest_card" do
-    context "given an array of Cards" do
-      it "finds the smallest card" do
-        expect(HandSpecHelper.check_smallest_card(@hand)).to be true
+  describe ".to_s" do
+    context "given no parameters" do
+      it "returns the string representation of the hand" do
+        r = HandSpecHelper.check_to_string(@hand.to_s, @hand.cards)
+        expect(r).to be true
       end
     end
-  end
+  end  
 
 end
