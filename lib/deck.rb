@@ -55,9 +55,9 @@ class Deck
       if j == @num_cards-1 && num_hands == 3
         if card.order == THREE_OF_DIAMONDS
           hands[hand_with_3c] << card
-      	else
-      	  hands[hand_with_3d] << card
-      	end
+        else
+          hands[hand_with_3d] << card
+        end
 
       else
         if i == num_hands
@@ -65,12 +65,12 @@ class Deck
         end
 
         if card.order == THREE_OF_DIAMONDS
-      	  hand_with_3d = i
-      	end
+          hand_with_3d = i
+        end
 
         if card.order == THREE_OF_CLUBS
-      	  hand_with_3c = i
-      	end
+          hand_with_3c = i
+        end
 
         hands[i] << card
         i += 1

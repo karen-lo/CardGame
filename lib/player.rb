@@ -16,6 +16,6 @@ class Player
   end
 
   def to_s
-  	print "player #{@player_id}"
+    print "player #{@player_id}"
   end
 end

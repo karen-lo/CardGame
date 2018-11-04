@@ -18,10 +18,10 @@ describe Deck do
     context "given no paramters" do
       it "returns the string representations of the entire deck of Cards" do
         deck = Deck.new
-	deck.num_cards.times do |i|
-	  card_string = Card.new(i).to_s
-	  expect(deck.to_s).to include(card_string)
-	end
+  deck.num_cards.times do |i|
+    card_string = Card.new(i).to_s
+    expect(deck.to_s).to include(card_string)
+  end
       end
     end
   end
@@ -57,7 +57,7 @@ describe Deck do
         @deck = Deck.new
         @deck.shuffle_deck
         @num_hands = 4
-	@hands = @deck.pass_out_hands(@num_hands)
+  @hands = @deck.pass_out_hands(@num_hands)
       end
       
       it "creates 4 hands" do
@@ -66,7 +66,7 @@ describe Deck do
 
       it "equally divides cards" do
         result = DeckSpecHelper.
-	         check_new_hand_sizes(@num_hands, @hands, @deck.num_cards)
+           check_new_hand_sizes(@num_hands, @hands, @deck.num_cards)
         expect(result).to be true 
       end
     end
@@ -76,7 +76,7 @@ describe Deck do
         @deck = Deck.new
         @deck.shuffle_deck
         @num_hands = 3
-	@hands = @deck.pass_out_hands(@num_hands)
+  @hands = @deck.pass_out_hands(@num_hands)
       end
       
       it "creates 3 hands" do
@@ -85,7 +85,7 @@ describe Deck do
 
       it "somewhat equally divides the cards" do
         result = DeckSpecHelper.
-	         check_new_hand_sizes(@num_hands, @hands, @deck.num_cards)
+           check_new_hand_sizes(@num_hands, @hands, @deck.num_cards)
         expect(result).to be true 
       end
 
@@ -101,8 +101,8 @@ describe Deck do
         @deck = Deck.new
         @deck.shuffle_deck
         @num_hands = 2
-	@ret_num_hands = 3
-	@hands = @deck.pass_out_hands(@num_hands)
+  @ret_num_hands = 3
+  @hands = @deck.pass_out_hands(@num_hands)
       end
       
       it "creates 3 hands" do
@@ -111,7 +111,7 @@ describe Deck do
 
       it "somewhat equally divides the cards" do
         result = DeckSpecHelper.
-	         check_new_hand_sizes(@ret_num_hands, @hands, @deck.num_cards)
+           check_new_hand_sizes(@ret_num_hands, @hands, @deck.num_cards)
         expect(result).to be true 
       end
 

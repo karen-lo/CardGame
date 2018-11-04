@@ -29,9 +29,9 @@ describe Player do
       before :context do
         @id = rand
         @player = Player.new(@id)
-      	@deck = Deck.new
-      	@deck.shuffle_deck
-      	@hand = @deck.pass_out_hands(3).first
+        @deck = Deck.new
+        @deck.shuffle_deck
+        @hand = @deck.pass_out_hands(3).first
       end
 
       it "saves the Hand" do

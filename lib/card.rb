@@ -9,7 +9,7 @@ class Card
   attr_accessor :order, :suit, :value
 
   def initialize(count)
-  	@order = count
+    @order = count
     @suit = (count % SUITS.length) + 1
     @value = (count / SUITS.length) + 1
   end

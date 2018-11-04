@@ -9,7 +9,7 @@ describe Game do
     context "given a deck and number of players" do
       before :context do
         @deck = Deck.new
-	      @num_players = 3
+        @num_players = 3
         @game = Game.new(@deck, @num_players)
       end
       
@@ -27,8 +27,8 @@ describe Game do
     context "given that the game is initialized" do
       before :context do
         @deck = Deck.new
-	      @num_players = 3
-	      @game = Game.new(@deck, @num_players)
+        @num_players = 3
+        @game = Game.new(@deck, @num_players)
       end
 
       it "makes the correct number of players" do
