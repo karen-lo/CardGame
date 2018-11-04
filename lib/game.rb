@@ -1,10 +1,12 @@
 # /lib/game.rb
 # Class definition for a Game
 
-require_relative 'player'
+require_relative 'commons'
 require_relative 'deck'
+require_relative 'player'
 
 class Game
+  include Commons
   
   attr_accessor :num_players, :deck, :players
 
@@ -19,6 +21,7 @@ class Game
 
   def play_game
     deal_hands
+    order_players
   end
 
   private
@@ -34,6 +37,22 @@ class Game
   def make_players
     @num_players.times do |i|
       @players << Player.new(i)
+    end
+  end
+
+  def order_players
+    start_player = 0
+    smallest_card_order = @players.first.hand.smallest_card.order
+    @players.drop(1).each.with_index(1) do |player, i|
+      if player.hand.smallest_card.order < smallest_card_order
+        start_player = i 
+        smallest_card_order = player.hand.smallest_card.order
+      end
+    end
+    i = 0
+    while i != start_player
+     @players.rotate!
+      i += 1
     end
   end
 end

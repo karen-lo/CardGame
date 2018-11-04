@@ -9,7 +9,7 @@ describe Game do
     context "given a deck and number of players" do
       before :context do
         @deck = Deck.new
-	@num_players = 3
+	      @num_players = 3
         @game = Game.new(@deck, @num_players)
       end
       
@@ -27,8 +27,8 @@ describe Game do
     context "given that the game is initialized" do
       before :context do
         @deck = Deck.new
-	@num_players = 3
-	@game = Game.new(@deck, @num_players)
+	      @num_players = 3
+	      @game = Game.new(@deck, @num_players)
       end
 
       it "makes the correct number of players" do
@@ -38,7 +38,6 @@ describe Game do
   end
 
   describe ".play_game" do
-   
    context "given a game of two players" do
      before :context do
        @deck = Deck.new
@@ -52,9 +51,9 @@ describe Game do
      end
 
      it "starts with the player with the lowest card" do
-       expect(GameSpecHelper.check_correct_first_player(@game.players)).to be true
+      r = GameSpecHelper.check_correct_first_player(@game.players)
+      expect(r).to be true
      end
-
    end
 
    context "given a game of three players" do
@@ -69,8 +68,9 @@ describe Game do
        expect(GameSpecHelper.check_player_hands(@game.players)).to be true
      end
 
-     it "starts with the player with three of clubs" do
-       expect(GameSpecHelper.check_correct_first_player(@game.players)).to be true
+     it "starts with the player with the lowest card" do
+      r = GameSpecHelper.check_correct_first_player(@game.players)
+      expect(r).to be true
      end
    end
    
@@ -86,9 +86,10 @@ describe Game do
        expect(GameSpecHelper.check_player_hands(@game.players)).to be true
      end
 
-     it "starts with the player with three of clubs" do
-       expect(GameSpecHelper.check_correct_first_player(@game.players)).to be true
-     end
+     it "starts with the player with the lowest card" do
+      r = GameSpecHelper.check_correct_first_player(@game.players)
+      expect(r).to be true
+    end
    end
   end
 end

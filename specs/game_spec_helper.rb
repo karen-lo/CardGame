@@ -1,10 +1,10 @@
 # /specs/game_spec_helper.rb
 # Module of helper functions for Game specs
 
+require_relative "spec_commons"
+
 module GameSpecHelper
-  THREE_OF_DIAMONDS = 2
-  SUIT_SIZE         = 13
-  DECK_SIZE         = 52
+  include SpecCommons
 
   def GameSpecHelper.check_player_hands(players)
     players.each do |player|
@@ -17,25 +17,16 @@ module GameSpecHelper
     if players.length < 2 || players.length > 4
       raise 'Error: do not support this number of players'
     end
-    
-    if players.length > 2
-      return players[0].hand.include?(Card.new(THREE_OF_DIAMONDS))
-    end
-    
-    smallest_card = THREE_OF_DIAMONDS
-    incr_value = 0
-    while smallest_card < DECK_SIZE
-      return true if players[0].hand.include?(Card.new(smallest_card))
-      return false if players[1].hand.include?(Card.new(smallest_card))
-      
-      if smallest_card + SUIT_SIZE > DECK_SIZE-1
-        incr_value += 1
-        smallest_card = THREE_OF_DIAMONDS + incr_value
-      else
-        smallest_card += SUIT_SIZE
+
+    smallest_card = players[0].hand.smallest_card
+    players.drop(1).each do |player|
+      if player.hand.smallest_card.order < smallest_card.order
+        smallest_card = player.hand.smallest_card
       end
     end
-    return false
+    puts "smallest card: #{smallest_card}"
+
+    return players[0].hand.has_card?(smallest_card)
   end
 
 end
