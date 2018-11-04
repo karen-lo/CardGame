@@ -12,17 +12,17 @@ describe Hand do
     @deck.shuffle_deck
     @num_hands = 3
     @hands = @deck.pass_out_hands(@num_hands)
-    @hand = Hand.new(@hands.first)
+    @hand = Hand.new(@hands[0])
   end
   
   describe ".new" do
     context "given an array of Cards" do
       it "keeps a copy of that array" do
-        expect(@hand.cards).to eq(@hands.first)
+        expect(@hand.cards).to eq(@hands[0])
       end
 
       it "has the correct sizeof the array" do
-        expect(@hand.num_cards).to eq(@hands.first.length)
+        expect(@hand.num_cards).to eq(@hands[0].length)
       end
     end
   end
@@ -38,7 +38,7 @@ describe Hand do
   describe ".has_card?" do
     context "given a Card in the hand" do
       it "returns true" do
-        expect(@hand.has_card?(@hand.cards.first)).to be true
+        expect(@hand.has_card?(@hand.cards[0])).to be true
       end
     end
     

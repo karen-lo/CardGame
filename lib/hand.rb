@@ -35,7 +35,7 @@ class Hand
   private
 
   def find_smallest_card
-    @smallest_card = @cards.first
+    @smallest_card = @cards[0]
     @cards.each do |card|
       next if card.order > @smallest_card.order
       @smallest_card = card

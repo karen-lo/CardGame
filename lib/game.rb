@@ -40,7 +40,7 @@ class Game
 
   def order_players
     start_player = 0
-    smallest_card_order = @players.first.hand.smallest_card.order
+    smallest_card_order = @players[0].hand.smallest_card.order
     @players.drop(1).each.with_index(1) do |player, i|
       if player.hand.smallest_card.order < smallest_card_order
         start_player = i 

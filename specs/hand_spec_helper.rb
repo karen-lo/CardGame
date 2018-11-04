@@ -16,7 +16,7 @@ module HandSpecHelper
     hand.cards.each do |card|
       cards << card.order
     end
-    cards.sort.first == hand.smallest_card.order
+    cards.sort[0] == hand.smallest_card.order
   end
 
   def HandSpecHelper.check_to_string(hand_str, cards_arr)

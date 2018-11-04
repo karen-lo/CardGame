@@ -31,7 +31,7 @@ describe Player do
         @player = Player.new(@id)
         @deck = Deck.new
         @deck.shuffle_deck
-        @hand = @deck.pass_out_hands(3).first
+        @hand = @deck.pass_out_hands(3)[0]
       end
 
       it "saves the Hand" do
