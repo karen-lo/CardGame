@@ -29,4 +29,9 @@ module GameSpecHelper
     return true
   end
 
+  def GameSpecHelper.pass_out_hands(players, hands)
+    players.zip(hands).each do |player, hand|
+      player.set_hand(hand)
+    end
+  end
 end

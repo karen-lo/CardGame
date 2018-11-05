@@ -70,7 +70,7 @@ describe Player do
 
   # end
 
-  describe "set_hand" do
+  describe ".set_hand" do
     context "given a Hand" do
       before :context do
         @id = rand

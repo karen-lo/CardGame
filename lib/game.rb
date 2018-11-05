@@ -17,6 +17,14 @@ class Game
     make_players
   end
 
+  def find_winner
+    winner = nil
+    @players.each do |player|
+      winner = player if player.hand.cards.empty?
+    end
+    winner
+  end
+
   def play_game
     puts "\nStarting game...\n\n"
     deal_hands
@@ -43,7 +51,7 @@ class Game
     @players.zip(hands).each do |player, hand|
       player.set_hand(hand)
     end
-  end
+  end 
 
   def make_players
     @num_players.times do |i|
@@ -67,12 +75,5 @@ class Game
       i += 1
     end
   end
-
-  def find_winner
-    winner = nil
-    @players.each do |player|
-      winner = player if player.hand.cards.empty?
-    end
-    winner
-  end
+  
 end
