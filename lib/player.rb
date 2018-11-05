@@ -18,23 +18,32 @@ class Player
     puts "This is your hand:"
     puts @hand.to_s
     puts INSTR_FOR_CARD_PICKING
-    puts "What card(s) you like to play?"
+    puts "What card(s) would you like to play?"
     choice_str = gets
+    choice = parse_choice(choice_str)
     
   end
 
-  def play(choice, prev_play) #TODO checks choice
-    # check first turn includes lowest card
-    # check if first play, else check same number of cards as prev_play
-    # check if valid hand if pair or poker hand
-    # check if cards will actually beat prev_play
-  end
+  
 
   def set_hand(hand)
     @hand = Hand.new(hand)
   end
 
   def to_s
-    print "Player #{@player_id}"
+    "Player #{@player_id}"
+  end
+
+  private
+
+  def check_play(choice, prev_play) #TODO checks choice
+    # check first turn includes lowest card
+    # check if first play, else check same number of cards as prev_play
+    # check if valid hand if pair or poker hand
+    # check if cards will actually beat prev_play
+  end
+
+  def parse_choice(choice_str)
+    choice_str  
   end
 end

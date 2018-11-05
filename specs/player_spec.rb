@@ -4,11 +4,12 @@
 require_relative '../lib/player'
 require_relative '../lib/deck'
 require_relative 'player_spec_helper'
+require_relative 'spec_commons'
 
 describe Player do
 
   describe ".new" do
-    context " given an id number" do
+    context "given an id number" do
       before :context do
         @id = rand
         @player = Player.new(@id)
@@ -24,51 +25,83 @@ describe Player do
     end
   end
 
-  # describe "play" do
-  #   context "given an array of cards not in player's hand" do
-  #     before :context do
-  #       @deck = Deck.new
-  #       @player = Player.new
-  #       @deck.shuffle_deck
-  #       @hand = @deck.pass_out_hands(DEFAULT_NUM_PLAYERS)[0]
-  #       @player.set_hand(@hand)
-  #       @choice = PlayerSpecHelper.select_cards_not_in_hand(1, @hand)
-  #     end
+  describe ".choose_play" do
+    before :example do
+      @player = Player.new(1)
+      @deck = Deck.new
+      @hands = @deck.pass_out_hands(SpecCommons::DEFAULT_NUM_PLAYERS)
+      @player.set_hand(@hands[0])
+    end
 
-  #     it "will not play the cards in the array" do
-  #       expect(@player.play(@choice)).to be false
-  #     end
-  #   end
+    context "given proper card-choosing syntax for 1 card" do
+      before :example do
+        @input = PlayerSpecHelper.select_cards_in_hand(1, @player.hand)
+        puts "cards: #{SpecCommons.card_array_to_s(@input)}"
+        @input_str = PlayerSpecHelper.parse_choose_play_input(@input)
+      end
 
-  #   context "given an array of 1 card in player's hand" do
-  #     before :context do
-  #       @deck = Deck.new
-  #       @deck.shuffle_deck
-  #       @player = Player.new
-  #       @hand = @deck.pass_out_hands(DEFAULT_NUM_PLAYERS)[0]
-  #       @player.set_hand(@hand)
-  #       @choice = PlayerSpecHelper.select_cards_in_hand(1, @hand)
-  #     end
+      it "finds the corresponding cards chosen" do
+        allow(@player).to receive(:gets).and_return(@input_str)
+        # s = PlayerSpecHelper.generate_choose_play_text(@player, @input_str)
+        # expect{@player.choose_play}.to output(s).to_stdout
 
-  #     it "will play the card in the array" do
-  #       expect(@player.play(@choice)).to be true
-  #     end
+        s1 = SpecCommons.card_array_to_s(@player.choose_play)
+        s2 = SpecCommons.card_array_to_s(@input)
+        expect{s1}.to eq(s2)
+      end
+    end
 
-  #     it "will remove the played card from the player's hand" do
-  #       @player.play(@choice)
-  #       r = PlayerSpecHelper.check_cards_not_in_hand(@choice, @hand)
-  #       expect(r).to be false
-  #     end
-  #   end
+    # context "given proper card-choosing syntax for 2 cards" do
+    #   before :example do
+    #     @input = PlayerSpecHelper.select_cards_in_hand(2, @player.hand)
+    #     @input = PlayerSpecHelper.parse_choose_play_input(@input)
+    #   end
 
-  #   context "given an array of 2 cards in player's hand" do
-      
-  #   end
+    #   it "finds the corresponding cards chosen" do
+    #     allow(@player).to receive(:gets).and_return(@input)
+    #     s = PlayerSpecHelper.generate_choose_play_text(@player, @input)
+    #     expect{@player.choose_play}.to output(s).to_stdout
+    #   end
+    # end
 
-  #   context "given an array of 5 cards in player's hand" do
-  #   end
+    # context "given proper card-choosing syntax for 5 cards" do
+    #   before :example do
+    #     @input = PlayerSpecHelper.select_cards_in_hand(5, @player.hand)
+    #     @input = PlayerSpecHelper.parse_choose_play_input(@input)
+    #   end
 
-  # end
+    #   it "finds the corresponding cards chosen" do
+    #     allow(@player).to receive(:gets).and_return(@input)
+    #     s = PlayerSpecHelper.generate_choose_play_text(@player, @input)
+    #     expect{@player.choose_play}.to output(s).to_stdout
+    #   end
+    # end
+
+    context "given inproper card-choosing syntax" do
+      it "finds the inproper syntax" do
+      end
+    end
+  end
+
+  describe ".check_play" do
+    context "given cards that are in hand" do
+      it "returns the set of cards" do
+      end
+
+      it "removes the cards from the hand" do
+      end
+    end
+
+    context "given cards that are not in hand" do
+      it "reprompts user" do
+      end
+    end
+
+    context "given correct number of cards" do
+      it "" do
+      end
+    end
+  end
 
   describe ".set_hand" do
     context "given a Hand" do

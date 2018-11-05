@@ -11,4 +11,15 @@ module SpecCommons
   DECK_SIZE             = 52
   DEFAULT_NUM_PLAYERS   = 3
   THREE_OF_DIAMONDS     = 0
+  VALUE_OFFSET          = 2
+
+  def SpecCommons.card_array_to_s(card_array)
+    string = "["
+    card_array.each_with_index do |card, i|
+      string += card.to_s
+      string += ", " if i != card_array.length-1
+    end
+    string += "]"
+  end
+
 end
