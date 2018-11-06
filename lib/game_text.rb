@@ -8,6 +8,6 @@ module GameText
       - Three of Diamonds -> 3d
       - King of Spades    -> 13s
       - Ace of Hearts     -> 1h
-    Seperate multiple cards with commas.
+    Seperate multiple cards with a space.
   }
 end

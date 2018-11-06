@@ -42,43 +42,49 @@ describe Player do
 
       it "finds the corresponding cards chosen" do
         allow(@player).to receive(:gets).and_return(@input_str)
-        # s = PlayerSpecHelper.generate_choose_play_text(@player, @input_str)
-        # expect{@player.choose_play}.to output(s).to_stdout
-
         s1 = SpecCommons.card_array_to_s(@player.choose_play)
         s2 = SpecCommons.card_array_to_s(@input)
-        expect{s1}.to eq(s2)
+        expect(s1).to eq(s2)
       end
     end
 
-    # context "given proper card-choosing syntax for 2 cards" do
-    #   before :example do
-    #     @input = PlayerSpecHelper.select_cards_in_hand(2, @player.hand)
-    #     @input = PlayerSpecHelper.parse_choose_play_input(@input)
-    #   end
+    context "given proper card-choosing syntax for 2 cards" do
+      before :example do
+        @input = PlayerSpecHelper.select_cards_in_hand(2, @player.hand)
+        puts "cards: #{SpecCommons.card_array_to_s(@input)}"
+        @input_str = PlayerSpecHelper.parse_choose_play_input(@input)
+      end
 
-    #   it "finds the corresponding cards chosen" do
-    #     allow(@player).to receive(:gets).and_return(@input)
-    #     s = PlayerSpecHelper.generate_choose_play_text(@player, @input)
-    #     expect{@player.choose_play}.to output(s).to_stdout
-    #   end
-    # end
+      it "finds the corresponding cards chosen" do
+        allow(@player).to receive(:gets).and_return(@input_str)
+        s1 = SpecCommons.card_array_to_s(@player.choose_play)
+        s2 = SpecCommons.card_array_to_s(@input)
+        expect(s1).to eq(s2)
+      end
+    end
 
-    # context "given proper card-choosing syntax for 5 cards" do
-    #   before :example do
-    #     @input = PlayerSpecHelper.select_cards_in_hand(5, @player.hand)
-    #     @input = PlayerSpecHelper.parse_choose_play_input(@input)
-    #   end
+    context "given proper card-choosing syntax for 5 cards" do
+      before :example do
+        @input = PlayerSpecHelper.select_cards_in_hand(5, @player.hand)
+        puts "cards: #{SpecCommons.card_array_to_s(@input)}"
+        @input_str = PlayerSpecHelper.parse_choose_play_input(@input)
+      end
 
-    #   it "finds the corresponding cards chosen" do
-    #     allow(@player).to receive(:gets).and_return(@input)
-    #     s = PlayerSpecHelper.generate_choose_play_text(@player, @input)
-    #     expect{@player.choose_play}.to output(s).to_stdout
-    #   end
-    # end
+      it "finds the corresponding cards chosen" do
+        allow(@player).to receive(:gets).and_return(@input_str)
+        s1 = SpecCommons.card_array_to_s(@player.choose_play)
+        s2 = SpecCommons.card_array_to_s(@input)
+        expect(s1).to eq(s2)
+      end
+    end
 
     context "given inproper card-choosing syntax" do
       it "finds the inproper syntax" do
+      end
+    end
+
+    context "given inproper listing syntax" do
+      it "delimits inappropriately, errors?" do
       end
     end
   end

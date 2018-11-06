@@ -8,6 +8,7 @@ module Commons
              6 => "Eight", 7 => "Nine", 8 => "Ten", 9 => "Jack", 10 => "Queen",
              11 => "King", 12 => "Ace", 13 => "Two"}
 
-  THREE_OF_DIAMONDS   = 0
-  THREE_OF_CLUBS      = 1
+  THREE_OF_DIAMONDS     = 0
+  THREE_OF_CLUBS        = 1
+  VALUE_OFFSET          = 2
 end
