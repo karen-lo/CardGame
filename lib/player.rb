@@ -22,9 +22,16 @@ class Player
     puts @hand.to_s
     puts INSTR_FOR_CARD_PICKING
     puts "What card(s) would you like to play?"
-    choice_str = gets
-    puts choice_str
-    choice = parse_choice(choice_str)
+    choice = nil
+    loop do
+      choice_str = gets
+      choice = parse_choice(choice_str)
+      break if choice != nil
+      puts "Please pick card(s) again with proper syntax."
+      puts INSTR_FOR_CARD_PICKING
+    end
+    choice
+    
     
   end
 
@@ -50,6 +57,11 @@ class Player
   def parse_choice(choice_str)
     choice_cards = []
     choice_str.split.each do |choice|
+      if choice.length > 3 || choice.length < 2
+        puts "Syntax error for '#{choice}'."
+        return nil
+      end
+
       suit = 0, value = 0
       case choice[-1]
       when "d"
@@ -61,10 +73,26 @@ class Player
       when "s"
         suit = 3
       else
+        puts "Syntax error for '#{choice}'"
+        puts "Suit, #{choice[-1]},  is not a valid suit."
         return nil
       end
-      value = choice.to_i
-      return nil if value < 1 || value > VALUES.length
+      
+      value = choice.chop #TODO: only numerics? regex
+
+      if !value.match(/\d/)
+        puts "Syntax error for '#{choice}'."
+        puts "Value, '#{value}', is not only numerics."
+        return nil
+      end
+
+      value = value.to_i
+      # puts "value: #{value}"
+      if value < 1 || value > VALUES.length
+        puts "Syntax error for '#{choice}'"
+        puts "Value is not valid."
+        return nil 
+      end
       value -= VALUE_OFFSET
       value += VALUES.length if value < 1
       value = (value - 1) * SUITS.length

@@ -1,6 +1,8 @@
 # /spec/spec_commons.rb
 # Module of common items to used for specs
 
+require 'stringio'
+
 module SpecCommons
   
   SUITS   = {1 => "Diamonds", 2 => "Clubs", 3 => "Hearts", 4 => "Spades"}
@@ -12,6 +14,18 @@ module SpecCommons
   DEFAULT_NUM_PLAYERS   = 3
   THREE_OF_DIAMONDS     = 0
   VALUE_OFFSET          = 2
+
+  def SpecCommons.capture_stdout(&blk)
+    old_stdout = $stdout
+    $stdout = new_stdout = StringIO.new
+    begin
+      yield
+    ensure
+      $stdout = old_stdout
+    end
+    new_stdout.string
+  end
+
 
   def SpecCommons.card_array_to_s(card_array)
     string = "["
