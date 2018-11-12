@@ -14,6 +14,10 @@ class Card
     @value = (count / SUITS.length) + 1
   end
 
+  def equals?(card)
+    card.order == @order
+  end
+
   def to_s
     "#{VALUES[@value]} of #{SUITS[@suit]}"
   end

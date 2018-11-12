@@ -1,14 +1,27 @@
 # /specs/hand_spec_helper.rb
 # Module of helper functions for Hand specs
 
-module HandSpecHelper
+require_relative 'spec_commons'
 
-  def HandSpecHelper.card_not_in_hand(cards_arr, deck_size)
-    deck_size.times do |i|
-      card = Card.new(i)
-      return card if !cards_arr.include? card
+module HandSpecHelper
+  include SpecCommons
+
+  def HandSpecHelper.card_not_in_hand(cards_arr)
+    cards_order = cards_arr.map{|card| card.order}
+    card = nil
+    loop do
+      card = rand(DECK_SIZE) 
+      break if !cards_order.include? card
     end
-    return nil
+    Card.new(card)
+  end
+
+  def HandSpecHelper.check_cards_not_in_hand(cards, hand)
+    result = true
+    cards.each do |card|
+      result = false if hand.has_card?(card)
+    end
+    result
   end
 
   def HandSpecHelper.check_smallest_card(hand)

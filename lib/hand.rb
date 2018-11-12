@@ -21,14 +21,18 @@ class Hand
     return false
   end
 
+  def remove_cards(card_arr)
+    del_arr = []
+    card_arr_order = card_arr.map{|card| card.order}
+    @cards.delete_if{|card| card_arr_order.include?(card.order)}
+  end
+
   def to_s
     string = "{ "
-    
     @cards.each_with_index do |card, i|
       string << "[#{card.to_s}]"
       string << ", " if i < @num_cards-1
     end
-    
     string << " }\n"
   end
 

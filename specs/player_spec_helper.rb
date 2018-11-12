@@ -14,14 +14,15 @@ module PlayerSpecHelper
     result
   end
 
-  def PlayerSpecHelper.compare_hands(player, hand)
-    hand.each do |card|
-      return false if !player.hand.cards.include?(card)
+  def PlayerSpecHelper.compare_cards(set1, set2)
+    set2_orders = set2.map {|card| card.order}
+    set1.each do |card|
+      return false if !set2_orders.include?(card.order)
     end
     return true
   end
 
-  def PlayerSpecHelper.parse_choose_play_input(input)
+  def PlayerSpecHelper.parse_play_input(input)
     string = ""
     input.each_with_index do |card, i|
       val = card.value + VALUE_OFFSET
@@ -42,11 +43,12 @@ module PlayerSpecHelper
     cards
   end
 
-  def PlayerSpecHelper.select_cards_not_in_hand(num_cards, hand)  #TODO maybe
+  def PlayerSpecHelper.select_cards_not_in_hand(num_cards, hand)
     cards = []
-    while cards.length < num_cards do
-      card = rand(DECK_SIZE) while hand.has_card?(Card.new(card)) || cards.include?(card)
-      cards << card
+    loop do
+      card = rand(DECK_SIZE)
+      cards << card if !hand.has_card?(Card.new(card)) && !cards.include?(card)
+      break if cards.length == num_cards
     end
     cards.map{|card| Card.new(card)}
   end

@@ -4,13 +4,14 @@
 require_relative '../lib/hand'
 require_relative '../lib/deck'
 require_relative 'hand_spec_helper'
+require_relative 'spec_commons'
 
 describe Hand do
   
   before :example do
     @deck = Deck.new
     @deck.shuffle_deck
-    @hands = @deck.pass_out_hands(DEFAULT_NUM_PLAYERS)
+    @hands = @deck.pass_out_hands(SpecCommons::DEFAULT_NUM_PLAYERS)
     @hand = Hand.new(@hands[0])
   end
   
@@ -43,8 +44,43 @@ describe Hand do
     
     context "given a Card not in the Hand" do
       it "returns false" do
-        card = HandSpecHelper.card_not_in_hand(@hand.cards, @deck.num_cards)
+        card = HandSpecHelper.card_not_in_hand(@hand.cards)
         expect(@hand.has_card?(card)).to be false
+      end
+    end
+  end
+
+  describe "remove_cards" do
+    context "given an array of Cards in the hand" do
+      before :example do
+        arr = []
+        loop do
+          i = rand(@hand.cards.length)
+          arr << i if !arr.include?(i)
+          break if arr.length == 5
+        end
+        @card_arr = arr.map{|x| @hand.cards[x]}
+      end
+
+      it "will remove those cards from the hand" do
+        @hand.remove_cards(@card_arr)
+        expect(HandSpecHelper.check_cards_not_in_hand(@card_arr, @hand)).to be true
+      end
+    end
+
+    context "given an array of Cards not in the hand" do
+      before :example do
+        @card_arr = []
+        loop do
+          @card_arr << HandSpecHelper.card_not_in_hand(@hand.cards)
+          break if @card_arr.length == 5
+        end
+      end
+
+      it "will not remove those cards" do
+        pre_remove = @hand.cards
+        @hand.remove_cards(@card_arr)
+        expect(@hand.cards).to eq(pre_remove)
       end
     end
   end

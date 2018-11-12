@@ -29,14 +29,13 @@ class Game
     puts "\nStarting game...\n\n"
     deal_hands
     order_players
+    
     # TODO
+    prev_play = nil
     while find_winner == nil
       # prompt player for choice
-      choice = @players[0].choose_play # TODO: test
+      choice = @players[0].play_cards(prev_play)
       return
-
-      # check choice with player.play
-      # game should verify cards played (undo or check in player.play)
 
       # rotate players at the end
       @players.rotate!
