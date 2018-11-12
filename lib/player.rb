@@ -38,7 +38,7 @@ class Player
       end
       break
     end
-    @hand.remove_cards(choice)
+      @hand.remove_cards(choice)
     choice
   end
 
