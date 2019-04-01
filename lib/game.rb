@@ -34,9 +34,10 @@ class Game
     prev_play = nil
     while find_winner == nil
       # prompt player for choice
-      choice = @players[0].play_cards(prev_play)
-      return
+      choice = @players[0].play_cards(prev_play) #TODO: indicate first play
+      return #TO BE REMOVED
 
+      prev_play = choice
       # rotate players at the end
       @players.rotate!
     end

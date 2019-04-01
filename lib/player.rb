@@ -58,6 +58,9 @@ class Player
       return false if !@hand.has_card?(card)
     end
     # check first turn includes lowest card
+    if(prev_play == nil)
+      return false if !choice.include?(@hand.smallest_card)
+    end
     # check if first play, else check same number of cards as prev_play
     # check if valid hand if pair or poker hand
     # check if cards will actually beat prev_play

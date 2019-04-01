@@ -63,7 +63,9 @@ describe Player do
       end
     end
 
-    context "given correct number of cards" do #TODO: incorporate prev_play
+    context "starting"
+
+    context "given correct number of cards" do #TODO: incorporate prev_play, a card array
       it "" do
       end
     end
